@@ -1,7 +1,7 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -12,15 +12,15 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Frederick Lamptey
+ * @version 2022.10.2022
  */
 
 public class Room 
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-
+    private ArrayList<Item> items;
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -31,6 +31,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        items = new ArrayList<>();
     }
 
     /**
@@ -88,5 +89,54 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    /**
+     * associates items to rooms
+     * @param name of item being passed in.
+     * @return arrayList of items room holds
+     */
+     public ArrayList getItem(){
+    return items;
+    }
+    
+    /**
+     * Associates items with rooms.
+     * @param name of item being passed in.
+     * Removes items from a room.
+     */
+     public void removeItem(){
+        items.clear();
+    }
+    
+    /**
+     * associates items with rooms.
+     * @param name of item being passed in.
+     * @return number of items a room contains.
+     */
+    public int numberItem(){
+    return items.size();
+    }
+    
+     /**
+     * Allows items to be associated with rooms.
+     * @param name of item being passed in.
+     */
+    public void setItem(Item name){
+    if (name != null){
+    items.add(name);    
+    }
+}
+
+/**
+*Prints weight and description of item   
+*/
+public void printItem(){
+    {
+         for(Item i: items){
+            System.out.println(i.getDescription() + ". The weight of the " +
+            "item is " + i.getWeight());
+        }
+    }
+}
 }
 

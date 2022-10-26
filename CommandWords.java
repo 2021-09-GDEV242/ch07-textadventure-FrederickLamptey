@@ -16,7 +16,7 @@ public class CommandWords
     // A mapping between a command word and the CommandWord
     // associated with it.
     private HashMap<String, CommandWord> validCommands;
-
+    private String commandString;
     /**
      * Constructor - initialise the command words.
      */
@@ -66,4 +66,5 @@ public class CommandWords
         }
         System.out.println();
     }
+    
 }
